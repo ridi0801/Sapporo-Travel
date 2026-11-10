@@ -24,23 +24,7 @@
   --control: 44px;
   --chip: 32px;
   --shadow-sheet: 0 -8px 40px 0 rgba(23, 32, 48, .18);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: #111824;
-    --press: #1b2433;
-    --ink: #edf1f6;
-    --ink-muted: #9aa6b8;
-    --ink-faint: #687387;
-    --line: #2a3445;
-    --on-ink: #111824;
-    --section: #1e2b40;
-    --on-section: #edf1f6;
-    --lamp: #e8b856;
-    --danger: #ff8a80;
-    --scrim: rgba(0, 0, 0, .55);
-    color-scheme: dark;
-  }
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
