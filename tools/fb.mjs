@@ -28,7 +28,7 @@ export const get = (path, token, shallow) => req('GET', path, token, undefined, 
 export const put = (path, body, token) => req('PUT', path, token, body);
 export const patchPath = (path, body, token) => req('PATCH', path, token, body);
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const [cmd, a, b] = process.argv.slice(2);
   const token = await getToken();
   if (cmd === 'get') console.log(JSON.stringify(await get(a || '', token), null, 2));
