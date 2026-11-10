@@ -23,14 +23,16 @@ function dday(meta) {
 
 function Header({ meta, conn, data }) {
   return html`<header class="top">
-    <div class="top-txt">
+    <div class="top-row">
       <div class="top-title">${meta?.title || '여행'}</div>
-      ${meta?.subtitle && html`<div class="top-sub">${meta.subtitle}</div>`}
+      <button class="top-more" onClick=${() => settings(data, conn)} aria-label="설정">
+        <span class=${`conn ${conn ? 'on' : ''}`}></span>⋯
+      </button>
     </div>
-    <div class="dday">${dday(meta)}</div>
-    <button class="top-more" onClick=${() => settings(data, conn)} aria-label="설정">
-      <span class=${`conn ${conn ? 'on' : ''}`}></span>⋯
-    </button>
+    <div class="top-meta">
+      <div class="top-sub">${meta?.subtitle || ''}</div>
+      <div class="dday">${dday(meta)}</div>
+    </div>
   </header>`;
 }
 
