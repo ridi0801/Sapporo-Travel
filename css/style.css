@@ -52,6 +52,7 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 
 /* 리틱체 (REATIC Wide) © 리틱인더스트리, fonts/REATIC-LICENSE.txt */
 @font-face { font-family: "REATIC Wide"; src: url("../fonts/REATIC-Wide.otf") format("opentype"); font-display: swap; }
+@font-face { font-family: "REATIC Light"; src: url("../fonts/REATIC-Light.otf") format("opentype"); font-display: swap; }
 
 /* 상단바: 밤하늘 구역 */
 .top { background: var(--section); color: var(--on-section); padding: calc(var(--space-5) + env(safe-area-inset-top)) 0 0; }
@@ -64,7 +65,7 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 .top-sub { display: flex; align-items: center; gap: var(--space-2); min-width: 0; }
 .top-sub:not(:empty)::before { content: ""; width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--lamp); flex: none; }
 /* D-day 상자: 리틱체 숫자로 꽉 채움 */
-.dday-badge { flex: none; display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: center; padding: var(--space-2) var(--space-3); border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .08); border-radius: 10px; font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1; white-space: nowrap; }
+.dday-badge { flex: none; display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: center; padding: var(--space-2) var(--space-3); border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .08); border-radius: 10px; font-family: "REATIC Light", "Pretendard Variable", sans-serif; font-size: 30px; line-height: 1; white-space: nowrap; }
 .conn { width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--on-section-muted); display: inline-block; }
 .conn.on { background: var(--online); }
 
