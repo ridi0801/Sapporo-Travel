@@ -16,9 +16,9 @@ function dday(meta) {
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const s = day(meta.start), e = meta.end ? day(meta.end) : s;
   const diff = Math.round((s - now) / 86400000);
-  if (diff > 0) return { top: '여행일까지', num: `D-${diff}`, sub: '일 남음' };
-  if (now <= e) return { top: '여행 중', num: `${Math.round((now - s) / 86400000) + 1}일차`, sub: `${Math.round((e - s) / 86400000) + 1}일 중` };
-  return { top: '여행일부터', num: `D+${Math.round((now - e) / 86400000)}`, sub: '여행 완료' };
+  if (diff > 0) return `D-${diff}`;
+  if (now <= e) return `${Math.round((now - s) / 86400000) + 1}일차`;
+  return `D+${Math.round((now - e) / 86400000)}`;
 }
 
 function Header({ meta, conn, data }) {
@@ -28,19 +28,15 @@ function Header({ meta, conn, data }) {
     <div class="top-row">
       <div class="top-head">
         ${year && html`<div class="top-eyebrow">Travel Plan · ${year}</div>`}
-        <div class="top-title">${meta?.title || '여행'}</div>
       </div>
-      ${d && html`<div class="dday-badge">
-        <span class="dday-top">${d.top}</span>
-        <span class="dday-num">${d.num}</span>
-        <span class="dday-sub">${d.sub}</span>
-      </div>`}
       <button class="top-more" onClick=${() => settings(data, conn)} aria-label="설정">
         <span class=${`conn ${conn ? 'on' : ''}`}></span>⋯
       </button>
     </div>
+    <div class="top-title">${meta?.title || '여행'}</div>
     <div class="top-meta">
       <div class="top-sub">${meta?.subtitle || ''}</div>
+      ${d && html`<div class="dday-badge">${d}</div>`}
     </div>
   </header>`;
 }
