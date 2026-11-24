@@ -92,7 +92,7 @@ function inline(s, keys) {
   t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, a, u) => `<a href="${u}" target="_blank" rel="noopener">${a}</a>`);
   t = t.replace(/(^|[\s(])(https?:\/\/[^\s<]+)/g, (_, p, u) => `${p}<a href="${u}" target="_blank" rel="noopener">${shortUrl(u)}</a>`);
   t = t.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
-  if (keys) t = t.replace(/^([^:<>]{1,16}):\s/, '<span class="k">$1</span> ');
+  if (keys) t = t.replace(/^([^:<>]{1,16}):\s(.*)$/, '<span class="k">$1</span> <span class="v">$2</span>');
   return t;
 }
 export function renderText(src, keys = false) {
