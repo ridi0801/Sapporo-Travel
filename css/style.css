@@ -125,7 +125,7 @@ textarea.field-input { line-height: 1.6; }
 .field.boxed > div:has(> .k) { display: grid; grid-template-columns: 5.5em 1fr; padding: 0; }
 .field.boxed > div:last-child { border-bottom: 0; }
 .field.boxed > .gap { display: none; }
-.field.boxed .k { background: var(--page); color: var(--ink-muted); padding: var(--space-2) var(--space-3); }
+.field.boxed .k { background: var(--page); color: var(--ink-muted); padding: var(--space-2) var(--space-3); display: flex; align-items: center; }
 .field.boxed .v { padding: var(--space-2) var(--space-3); word-break: keep-all; overflow-wrap: break-word; }
 
 /* 행 공통 */
@@ -163,15 +163,17 @@ textarea.field-input { line-height: 1.6; }
 .badge.ghost { color: var(--ink-faint); border: 1px dashed var(--line); }
 
 /* 타임라인 */
-.timeline { position: relative; }
-.tl { display: flex; align-items: flex-start; gap: 8px; padding: var(--space-2) 0; border-bottom: 1px solid var(--line); }
+.timeline { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 0 var(--space-3); }
+.tl { display: flex; align-items: flex-start; gap: 10px; padding: var(--space-3) 0; border-bottom: 1px dashed var(--line); }
 .tl:last-child { border-bottom: 0; }
-.tl-time { width: 48px; flex: none; font-size: 13px; color: var(--ink-muted); padding-top: 3px !important; font-variant-numeric: tabular-nums; }
+.timeline:empty { display: none; }
+.tl .handle { margin-left: -6px; }
+.tl-time { width: 60px; flex: none; font-size: 17px; line-height: 1.45; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 .tl-time.field-input { font-size: 16px; width: 64px; }
 .tl-dot { display: none; }
 .tl-main { flex: 1; min-width: 0; }
-.tl-title { font-size: 17px; line-height: 1.45; }
-.tl-desc { font-size: 13px; line-height: 1.4; color: var(--ink-muted); }
+.tl-title { font-size: 16px; line-height: 1.5; word-break: keep-all; overflow-wrap: break-word; }
+.tl-desc { font-size: 13px; line-height: 1.45; color: var(--ink-muted); margin-top: 2px !important; word-break: keep-all; overflow-wrap: break-word; }
 
 /* 표 */
 .table-wrap { overflow-x: auto; }
