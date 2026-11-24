@@ -55,16 +55,16 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 
 /* 상단바: 밤하늘 구역 */
 .top { background: var(--section); color: var(--on-section); padding: calc(var(--space-5) + env(safe-area-inset-top)) 0 0; }
-.top-row { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--gutter) var(--space-3); }
+.top-row { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--gutter) var(--space-5); }
 .top-head { flex: 1; min-width: 0; }
 .top-eyebrow { font-size: 11px; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: var(--space-1); }
-.top-title { padding: 0 var(--gutter) var(--space-5); font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 27px; line-height: 1.2; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
+.top-title { font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1.2; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
 .top-more { align-self: flex-start; font-size: 20px; line-height: 1; padding: 6px 0 6px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
 .top-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border-top: 1px solid var(--section-line); padding: var(--space-3) var(--gutter); font-size: 14px; line-height: 1.4; }
 .top-sub { display: flex; align-items: center; gap: var(--space-2); min-width: 0; }
 .top-sub:not(:empty)::before { content: ""; width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--lamp); flex: none; }
 /* D-day 상자: 리틱체 숫자로 꽉 채움 */
-.dday-badge { flex: none; display: flex; align-items: center; justify-content: center; padding: var(--space-3); border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .08); border-radius: 10px; font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 20px; line-height: 1; white-space: nowrap; }
+.dday-badge { flex: none; display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: center; padding: var(--space-2) var(--space-3); border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .08); border-radius: 10px; font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1; white-space: nowrap; }
 .conn { width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--on-section-muted); display: inline-block; }
 .conn.on { background: var(--online); }
 
