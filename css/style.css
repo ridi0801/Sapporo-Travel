@@ -119,6 +119,14 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 textarea.field-input { line-height: 1.6; }
 
 .memo { font-size: 15px; }
+/* 메모 상자 보기: "항목: 내용" 줄이 왼쪽 이름 칸 + 오른쪽 내용 칸 행이 된다 */
+.field.boxed { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; padding: 0; margin: 0; font-size: 14px; line-height: 1.5; }
+.field.boxed > div { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); }
+.field.boxed > div:has(> .k) { display: grid; grid-template-columns: 5.5em 1fr; padding: 0; }
+.field.boxed > div:last-child { border-bottom: 0; }
+.field.boxed > .gap { display: none; }
+.field.boxed .k { background: var(--page); color: var(--ink-muted); padding: var(--space-2) var(--space-3); }
+.field.boxed .v { padding: var(--space-2) var(--space-3); word-break: keep-all; overflow-wrap: break-word; }
 
 /* 행 공통 */
 .row { display: flex; align-items: flex-start; gap: 8px; padding: var(--space-2) 0; border-bottom: 1px solid var(--line); }

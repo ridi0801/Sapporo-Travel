@@ -77,8 +77,12 @@ const AddBtn = ({ label = '추가', onClick }) => html`<button class="add" onCli
 
 /* ---------- 메모 ---------- */
 function MemoView({ b }) {
-  return html`<${Field} path=${`blocks/${b.id}/text`} value=${b.text} multiline keys placeholder="내용 입력" cls="memo" />`;
+  return html`<${Field} path=${`blocks/${b.id}/text`} value=${b.text} multiline keys placeholder="내용 입력" cls=${b.box ? 'memo boxed' : 'memo'} />`;
 }
+// "항목: 내용" 줄을 상자 안의 행으로 보여 주기 (블록마다 켜고 끔)
+const memoExtra = b => [
+  { icon: '▤', label: b.box ? '상자 보기 끄기' : '상자로 보기', onClick: () => patch({ [`blocks/${b.id}/box`]: !b.box || null }) },
+];
 
 /* ---------- 체크리스트 ---------- */
 function checklistItems(b) {
@@ -277,7 +281,7 @@ function today() {
 
 /* ---------- 등록 ---------- */
 export const TYPES = {
-  memo: { label: '메모', icon: '📝', View: MemoView, init: () => ({ text: '' }) },
+  memo: { label: '메모', icon: '📝', View: MemoView, init: () => ({ text: '' }), extra: memoExtra },
   checklist: {
     label: '체크리스트', icon: '☑️', View: ChecklistView, init: () => ({}),
     badge: b => { const a = list(b.items); return a.length ? `${a.filter(x => x.done).length}/${a.length}` : ''; },
