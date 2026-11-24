@@ -56,9 +56,9 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 
 /* 상단바: 밤하늘 구역 */
 .top { background: var(--section); color: var(--on-section); padding: calc(var(--space-5) + env(safe-area-inset-top)) 0 0; }
-.top-row { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--gutter) var(--space-5); }
+.top-row { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--gutter) var(--space-3); }
 .top-head { flex: 1; min-width: 0; }
-.top-eyebrow { font-size: 11px; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: var(--space-1); }
+.top-eyebrow { font-size: 11px; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: 12px; /* 제목 글자가 이 문구와 아래 구분선 사이 가운데에 오도록 (.top-row 아래 여백과 짝) */ }
 .top-title { font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1.5; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
 .top-side { flex: none; align-self: stretch; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; gap: var(--space-2); }
 .top-more { font-size: 15px; line-height: 1; padding: 2px 0 2px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
