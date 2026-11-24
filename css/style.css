@@ -61,12 +61,12 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 .top-eyebrow { font-size: 11px; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: var(--space-1); }
 .top-title { font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1.5; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
 .top-side { flex: none; align-self: stretch; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; gap: var(--space-2); }
-.top-more { font-size: 20px; line-height: 1; padding: 6px 0 6px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
+.top-more { font-size: 15px; line-height: 1; padding: 2px 0 2px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
 .top-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border-top: 1px solid var(--section-line); padding: var(--space-3) var(--gutter); font-size: 14px; line-height: 1.4; }
 .top-sub { display: flex; align-items: center; gap: var(--space-2); min-width: 0; }
 .top-sub:not(:empty)::before { content: ""; width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--lamp); flex: none; }
 /* D-day: 리틱 Light 한 줄 */
-.dday { flex: none; font-family: "REATIC Light", "Pretendard Variable", sans-serif; font-size: 24px; line-height: 1; white-space: nowrap; }
+.dday { flex: none; font-family: "REATIC Light", "Pretendard Variable", sans-serif; font-size: 24px; line-height: calc(22px * 1.5); /* 제목 한 줄 높이와 같게 */ white-space: nowrap; }
 .conn { width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--on-section-muted); display: inline-block; }
 .conn.on { background: var(--online); }
 
