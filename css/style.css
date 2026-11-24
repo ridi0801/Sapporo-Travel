@@ -60,8 +60,11 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 .top-head { flex: 1; min-width: 0; }
 .top-eyebrow { font-size: 11px; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: 12px; /* 제목 글자가 이 문구와 아래 구분선 사이 가운데에 오도록 (.top-row 아래 여백과 짝) */ }
 .top-title { font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1.5; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
-.top-side { flex: none; align-self: stretch; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; gap: var(--space-2); }
-.top-more { font-size: 15px; line-height: 1; padding: 2px 0 2px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
+/* ⋯ 는 오른쪽 위 구석에 띄우고, D-day는 제목 두 줄의 세로 가운데 */
+.top-row { position: relative; }
+.top-line { display: flex; align-items: center; gap: var(--space-3); }
+.top-line .top-title { flex: 1; min-width: 0; }
+.top-more { position: absolute; top: 0; right: var(--gutter); font-size: 15px; line-height: 1; padding: 2px 0 2px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
 .top-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border-top: 1px solid var(--section-line); padding: var(--space-3) var(--gutter); font-size: 14px; line-height: 1.4; }
 .top-sub { display: flex; align-items: center; gap: var(--space-2); min-width: 0; }
 .top-sub:not(:empty)::before { content: ""; width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--lamp); flex: none; }
