@@ -121,11 +121,14 @@ textarea.field-input { line-height: 1.6; }
 .memo { font-size: 15px; }
 /* 메모 상자 보기: "항목: 내용" 줄이 왼쪽 이름 칸 + 오른쪽 내용 칸 행이 된다 */
 .field.boxed { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; padding: 0; margin: 0; font-size: 14px; line-height: 1.5; }
+/* 왼쪽 칸은 가장 긴 항목 이름에 맞춰 최대 4자까지 넓어지고, 그보다 길면 줄바꿈 (행마다 subgrid로 폭 공유) */
+.field.boxed { display: grid; grid-template-columns: fit-content(calc(4.5em + var(--space-2) * 2)) 1fr; }
+.field.boxed > * { grid-column: 1 / -1; }
 .field.boxed > div { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); }
-.field.boxed > div:has(> .k) { display: grid; grid-template-columns: 4.2em 1fr; padding: 0; }
+.field.boxed > div:has(> .k) { display: grid; grid-template-columns: subgrid; padding: 0; }
 .field.boxed > div:last-child { border-bottom: 0; }
 .field.boxed > .gap { display: none; }
-.field.boxed .k { background: var(--page); color: var(--ink-muted); padding: var(--space-2) var(--space-1); display: flex; align-items: center; justify-content: center; text-align: center; }
+.field.boxed .k { background: var(--page); color: var(--ink-muted); padding: var(--space-2); min-width: 4.2em; display: flex; align-items: center; justify-content: center; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
 .field.boxed .v { padding: var(--space-2) var(--space-3); word-break: keep-all; overflow-wrap: break-word; }
 
 /* 행 공통 */
