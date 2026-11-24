@@ -168,7 +168,8 @@ textarea.field-input { line-height: 1.6; }
 .tl:last-child { border-bottom: 0; }
 .timeline:empty { display: none; }
 .tl .handle { margin-left: -6px; }
-.tl-time { width: 60px; flex: none; font-size: 17px; line-height: 1.45; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tl-time { width: 60px; flex: none; font-family: "Barlow Condensed", "Pretendard Variable", Pretendard, sans-serif; font-size: 20px; line-height: 1.2; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (min-width: 601px) { .tl-time { font-size: 22px; } }
 .tl-time.field-input { font-size: 16px; width: 64px; }
 .tl-dot { display: none; }
 .tl-main { flex: 1; min-width: 0; }
