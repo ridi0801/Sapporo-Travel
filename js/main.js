@@ -30,10 +30,12 @@ function Header({ meta, conn, data }) {
         ${year && html`<div class="top-eyebrow">Travel Plan · ${year}</div>`}
         <div class="top-title">${meta?.title || '여행'}</div>
       </div>
-      ${d && html`<div class="dday">${d}</div>`}
-      <button class="top-more" onClick=${() => settings(data, conn)} aria-label="설정">
-        <span class=${`conn ${conn ? 'on' : ''}`}></span>⋯
-      </button>
+      <div class="top-side">
+        <button class="top-more" onClick=${() => settings(data, conn)} aria-label="설정">
+          <span class=${`conn ${conn ? 'on' : ''}`}></span>⋯
+        </button>
+        ${d && html`<div class="dday">${d}</div>`}
+      </div>
     </div>
     <div class="top-meta">
       <div class="top-sub">${meta?.subtitle || ''}</div>
