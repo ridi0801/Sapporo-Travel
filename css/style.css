@@ -55,20 +55,23 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 /* 리틱체 (REATIC Wide) © 리틱인더스트리, fonts/REATIC-LICENSE.txt */
 @font-face { font-family: "REATIC Wide"; src: url("../fonts/REATIC-Wide.otf") format("opentype"); font-display: swap; }
 @font-face { font-family: "REATIC Light"; src: url("../fonts/REATIC-Light.otf") format("opentype"); font-display: swap; }
+@font-face { font-family: "REATIC Narrow"; src: url("../fonts/REATIC-Narrow.otf") format("opentype"); font-display: swap; }
 
 /* 상단바: 밤하늘 구역 */
 .top { background: var(--section); color: var(--on-section); padding: calc(var(--space-5) + env(safe-area-inset-top)) 0 0; }
 .top-row { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--gutter) var(--space-5); /* 아래 여백 = 위 여백 */ }
 .top-head { flex: 1; min-width: 0; }
-.top-eyebrow { font-size: 11px; line-height: 1.4; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: 12px; }
-.top-title { font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 1.5; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
+/* 줄 높이는 정수 px: 선과 글자가 반 픽셀에 걸려 어긋나 보이지 않게 */
+.top-eyebrow { font-size: 11px; line-height: 15px; letter-spacing: .2em; text-transform: uppercase; color: var(--lamp); margin-bottom: 12px; }
+.top-title { font-family: "REATIC Wide", "Pretendard Variable", sans-serif; font-size: 22px; line-height: 34px; font-weight: 400; letter-spacing: -0.5px; word-break: keep-all; }
 /* ⋯ 는 오른쪽 위 구석에 띄우고, D-day는 제목 두 줄의 세로 가운데 */
 .top-row { position: relative; }
 .top-line { display: flex; align-items: center; gap: var(--space-3); }
 .top-line .top-title { flex: 1; min-width: 0; }
 .top-more { position: absolute; top: 0; right: var(--gutter); font-size: 15px; line-height: 1; padding: 2px 0 2px 6px; display: flex; align-items: center; gap: 8px; color: var(--on-section-muted); }
-/* D-day: 리틱 Light 한 줄, 반투명 상자 (제목 두 줄의 세로 가운데) */
-.dday { flex: none; font-family: "REATIC Light", "Pretendard Variable", sans-serif; font-size: 24px; line-height: 28px; white-space: nowrap; padding: 4px 14px; background: var(--section-glass); border: 1px solid var(--section-glass-line); border-radius: 10px; }
+/* D-day: 리틱 Narrow, 위아래 선만. 리틱체는 글자가 글꼴 크기를 꽉 채워서
+   제목 두 줄(34px×2)의 글자는 위 6px~아래 62px → 선을 그 두 끝에 맞추고(높이 56), 38px 글자의 위아래 여백은 8px씩 */
+.dday { flex: none; box-sizing: border-box; height: 56px; border-top: 1px solid var(--on-section-muted); border-bottom: 1px solid var(--on-section-muted); font-family: "REATIC Narrow", "Pretendard Variable", sans-serif; font-size: 38px; line-height: 54px; white-space: nowrap; text-align: center; }
 .conn { width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--on-section-muted); display: inline-block; }
 .conn.on { background: var(--online); }
 
