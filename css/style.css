@@ -72,29 +72,31 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 .conn { width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--on-section-muted); display: inline-block; }
 .conn.on { background: var(--online); }
 
-/* 페이지 탭 */
+/* 페이지 탭: 서류철 탭. 탭 줄은 눈그늘 바탕, 고른 탭은 위 모서리만 둥근 흰 손잡이로 바로 아래 첫 흰 블록과 한 덩어리가 된다 */
 .tabs {
   position: sticky; top: 0; z-index: 10;
-  display: flex; gap: var(--space-5); overflow-x: auto; scrollbar-width: none;
-  background: var(--paper); border-bottom: 1px solid var(--line);
-  padding: var(--space-3) var(--gutter);
+  display: flex; align-items: flex-end; gap: 2px; overflow-x: auto; scrollbar-width: none;
+  background: var(--page);
+  /* 왼쪽은 내용 기둥의 왼쪽 끝(휴대폰에선 화면 끝)에서 시작해 첫 탭이 아래 블록과 왼쪽 끝이 맞게 */
+  padding: var(--space-2) calc(var(--gutter) - 14px) 0 max(0px, calc((100% - var(--content)) / 2));
 }
 .tabs::-webkit-scrollbar { display: none; }
-.tab { flex: none; display: inline-flex; align-items: center; gap: var(--space-2); color: var(--ink-muted); font-size: 14px; line-height: 1.4; white-space: nowrap; }
-.tab.on { color: var(--ink); }
-.tab.on::before { content: ""; width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--lamp); flex: none; }
+.tab { flex: none; display: inline-flex; align-items: center; color: var(--ink-muted); font-size: 14px; line-height: 1.4; white-space: nowrap; padding: var(--space-2) 14px; border-radius: 10px 10px 0 0; }
+.tab.on { color: var(--ink); background: var(--paper); }
 .tab-ico { display: none; }
 .add-tab { font-size: 18px; line-height: 1; color: var(--ink-faint); }
 
 /* 페이지 */
-/* 페이지 제목은 두지 않는다: 어느 페이지인지는 탭의 노란 점이 알려 주고, 고른 탭을 한 번 더 누르면 페이지 메뉴 */
-.page { max-width: 720px; margin: 0 auto; padding: var(--space-2) 0 calc(80px + env(safe-area-inset-bottom)); }
+/* 페이지 제목은 두지 않는다: 어느 페이지인지는 고른 탭(흰 손잡이)이 알려 주고, 고른 탭을 한 번 더 누르면 페이지 메뉴.
+   첫 블록은 틈 없이 탭 바로 아래에 붙어 손잡이와 이어진다 */
+.page { max-width: 720px; margin: 0 auto; padding: 0 0 calc(80px + env(safe-area-inset-bottom)); }
 .grow { flex: 1; min-width: 0; }
 .empty-note { text-align: center; color: var(--ink-muted); padding: var(--space-7) var(--space-4); }
 
-.chips { display: flex; gap: var(--space-1); overflow-x: auto; scrollbar-width: none; margin: 0 0 var(--space-2); padding: 0 var(--space-4); }
+/* 블록을 탭으로 보는 페이지(일정 등): 칩 줄도 흰 종이 위에 두고 아래 블록과 틈 없이 붙여, 고른 탭 손잡이 → 칩 → 블록이 한 장으로 이어지게 */
+.chips { display: flex; gap: var(--space-1); overflow-x: auto; scrollbar-width: none; margin: 0; padding: var(--space-3) var(--space-4) var(--space-1); background: var(--paper); }
 .chips::-webkit-scrollbar { display: none; }
-.chip-btn { flex: none; height: var(--chip); background: var(--paper); border: 1px solid var(--paper); border-radius: var(--radius-pill); padding: 0 var(--space-3); font-size: 13px; color: var(--ink); white-space: nowrap; }
+.chip-btn { flex: none; height: var(--chip); background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-pill); padding: 0 var(--space-3); font-size: 13px; color: var(--ink); white-space: nowrap; }
 .chip-btn.on { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
 
 /* 블록: 상자 없이 전폭 구분선 + ● 이름 */
