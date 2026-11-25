@@ -12,6 +12,8 @@
   --on-section: #f6f8fa;
   --on-section-muted: #a9b6c8;
   --section-line: #3a4a62;
+  --section-glass: rgba(255, 255, 255, .08);
+  --section-glass-line: rgba(255, 255, 255, .18);
   --lamp: #e3b04b;
   --danger: #b3261e;
   --online: #8fcf7a;
@@ -68,8 +70,8 @@ a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; t
 .top-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border-top: 1px solid var(--section-line); padding: var(--space-3) var(--gutter); font-size: 14px; line-height: 1.4; }
 .top-sub { display: flex; align-items: center; gap: var(--space-2); min-width: 0; }
 .top-sub:not(:empty)::before { content: ""; width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--lamp); flex: none; }
-/* D-day: 리틱 Light 한 줄 */
-.dday { flex: none; font-family: "REATIC Light", "Pretendard Variable", sans-serif; font-size: 24px; line-height: calc(22px * 1.5); /* 제목 한 줄 높이와 같게 */ white-space: nowrap; }
+/* D-day: 리틱 Light 한 줄, 반투명 상자 (제목 두 줄의 세로 가운데) */
+.dday { flex: none; font-family: "REATIC Light", "Pretendard Variable", sans-serif; font-size: 24px; line-height: 28px; white-space: nowrap; padding: 4px 14px; background: var(--section-glass); border: 1px solid var(--section-glass-line); border-radius: 10px; }
 .conn { width: var(--dot); height: var(--dot); border-radius: var(--radius-pill); background: var(--on-section-muted); display: inline-block; }
 .conn.on { background: var(--online); }
 
