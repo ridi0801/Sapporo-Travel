@@ -37,9 +37,6 @@ function Header({ meta, conn, data }) {
         <span class=${`conn ${conn ? 'on' : ''}`}></span>⋯
       </button>
     </div>
-    <div class="top-meta">
-      <div class="top-sub">${meta?.subtitle || ''}</div>
-    </div>
   </header>`;
 }
 
@@ -75,10 +72,12 @@ function Tabs({ pages, cur, setCur }) {
     const id = newId();
     patch({ [`pages/${id}`]: { title: '', icon: '📄', order: nextOrder(pages) } });
     setCur(id);
+    pageEdit(id);
     requestFocus(`pages/${id}/title`);
   };
+  // 고른 탭을 한 번 더 누르면 페이지 메뉴
   return html`<nav class="tabs">
-    ${pages.map(p => html`<button key=${p.id} class=${`tab ${cur === p.id ? 'on' : ''}`} onClick=${() => setCur(p.id)}>
+    ${pages.map(p => html`<button key=${p.id} class=${`tab ${cur === p.id ? 'on' : ''}`} onClick=${() => (cur === p.id ? pageMenu(p, pages) : setCur(p.id))}>
       <span class="tab-ico">${p.icon || '📄'}</span>${p.title || '새 페이지'}
     </button>`)}
     <button class=${`tab ${cur === ARCHIVE ? 'on' : ''}`} onClick=${() => setCur(ARCHIVE)}><span class="tab-ico">🗃️</span>보관함</button>
@@ -93,11 +92,22 @@ function pageMenu(page, pages) {
   openSheet({
     title: page.title || '페이지',
     actions: [
+      { icon: '✎', label: '이름·아이콘 바꾸기', onClick: () => pageEdit(page.id) },
       { icon: '🗂', label: page.tabs ? '블록 탭 보기 끄기' : '블록을 탭으로 보기', onClick: () => patch({ [`pages/${page.id}/tabs`]: !page.tabs || null }) },
       i > 0 && { icon: '←', label: '왼쪽으로', onClick: () => mv(i - 1) },
       i < pages.length - 1 && { icon: '→', label: '오른쪽으로', onClick: () => mv(i + 1) },
       { icon: '🗃️', label: '페이지 보관함으로', danger: true, onClick: () => patch(archiveUpdates(`pages/${page.id}`)) },
     ],
+  });
+}
+
+function pageEdit(id) {
+  openSheet({
+    title: '페이지 이름·아이콘',
+    content: () => { const p = getData().pages?.[id] || {}; return html`<div class="sheet-form">
+      <label>이름</label><${Field} path=${`pages/${id}/title`} value=${p.title} placeholder="페이지 이름" />
+      <label>아이콘 (이모지 하나)</label><${Field} path=${`pages/${id}/icon`} value=${p.icon} placeholder="📄" />
+    </div>`; },
   });
 }
 
@@ -178,11 +188,6 @@ function PageView({ data, page, pages }) {
   const [sel, setSel] = useLocal('t:' + page.id, null);
   const shown = page.tabs ? [blocks.find(b => b.id === sel) || blocks[0]].filter(Boolean) : blocks;
   return html`<main class="page">
-    <div class="page-head">
-      <${Field} path=${`pages/${page.id}/icon`} value=${page.icon} placeholder="📄" cls="page-icon" />
-      <${Field} path=${`pages/${page.id}/title`} value=${page.title} placeholder="페이지 제목" cls="page-title grow" />
-      <button class="more" onClick=${() => pageMenu(page, pages)} aria-label="페이지 메뉴">⋯</button>
-    </div>
     ${page.tabs && blocks.length > 0 && html`<div class="chips">
       ${blocks.map(b => html`<button key=${b.id} class=${`chip-btn ${shown[0]?.id === b.id ? 'on' : ''}`} onClick=${() => setSel(b.id)}>
         ${b.title || TYPES[b.type]?.label}
@@ -217,7 +222,6 @@ function ArchiveView({ data }) {
   const restore = r => patch({ [`${r.path}/archived`]: null, [`${r.path}/archivedAt`]: null });
   const purge = r => { if (confirm(`「${r.text}」을(를) 완전히 지울까요? 되돌릴 수 없어요.`)) patch({ [r.path]: null }); };
   return html`<main class="page">
-    <div class="page-head"><div class="page-icon field">🗃️</div><div class="page-title field grow">보관함</div></div>
     ${rows.length === 0 && html`<div class="empty-note">보관한 것이 없어요</div>`}
     ${rows.map(r => html`<div class="arch" key=${r.path}>
       <div class="arch-main">
